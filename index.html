@@ -1,68 +1,405 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarePlus Hospital Management</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b7f86">
+  <title>CarePlus | Smart Hospital Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<div id="careBot">
+    <button id="botToggle" onclick="toggleCareBot()">
+        🤖 Care Plus Help
+    </button>
 
-    <header>
-        <h2>🏥 CarePlus Hospital</h2>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-        </nav>
-    </header>
+    <div id="botWindow">
+        <div class="bot-header">
+            <strong>Care Plus Assistant</strong>
+            <button onclick="toggleCareBot()">✕</button>
+        </div>
 
-    <section class="hero" id="home">
-        <h1>Welcome to CarePlus Hospital</h1>
-        <p>Smart Healthcare & Diet Management System</p>
-        <button onclick="showMessage()">Get Started</button>
-    </section>
-
-    <section id="services">
-        <h2>Our Management Modules</h2>
-
-        <div class="container">
-            <div class="card">
-                <h3>👨‍⚕️ Patient Management</h3>
-                <p>Manage patient information and records.</p>
-            </div>
-
-            <div class="card">
-                <h3>🩺 Doctor Management</h3>
-                <p>Manage doctors and departments.</p>
-            </div>
-
-            <div class="card">
-                <h3>📅 Appointments</h3>
-                <p>Manage hospital appointments.</p>
-            </div>
-
-            <div class="card">
-                <h3>🍎 Diet & Nutrition</h3>
-                <p>Manage patient meal plans and nutrition.</p>
+        <div id="botMessages">
+            <div class="bot-message">
+                Hello! Welcome to Care Plus Hospital.
+                How can I help you today?
             </div>
         </div>
+
+        <div class="bot-questions">
+            <button onclick="botReply('timings')">Hospital timings</button>
+            <button onclick="botReply('departments')">Departments</button>
+            <button onclick="botReply('appointment')">Appointments</button>
+            <button onclick="botReply('beds')">Bed availability</button>
+            <button onclick="botReply('contact')">Contact information</button>
+        </div>
+    </div>
+</div>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="CarePlus home">
+      <span class="brand-mark">✚</span>
+      <span>Care<span>Plus</span><small>HOSPITAL MANAGEMENT</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+    <a class="active" href="#home">Home</a>
+    <a href="#services">Modules</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#emergency">Emergency</a>
+    <a href="#about">About</a>
+</nav>
+    <a class="header-cta" href="#services">Explore system <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse-dot"></span> SMARTER CARE. BETTER TOMORROWS.</div>
+        <h1>Healthcare management,<br><span>made simpler.</span></h1>
+        <p class="hero-copy">One connected place to organise patient information, coordinate care, manage appointments and support healthier lives.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#services">Get started <span>→</span></a>
+          <a class="text-link" href="#services">Explore modules <span>↓</span></a>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-icon">✓</div>
+          <p><strong>Organised. Connected. Patient-focused.</strong><br><span>A simple digital experience for hospital teams.</span></p>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Healthcare illustration">
+        <div class="visual-glow"></div>
+        <div class="float-card float-top"><span class="mini-icon">♡</span><span><strong>Care first</strong><small>Every patient matters</small></span></div>
+        <div class="medical-art">
+          <div class="art-cross">✚</div>
+          <div class="art-ring ring-one"></div>
+          <div class="art-ring ring-two"></div>
+          <div class="art-panel">
+            <div class="panel-top"><span></span><span></span><span></span></div>
+            <div class="heartbeat">⌁</div>
+            <div class="panel-lines"><i></i><i></i><i></i></div>
+          </div>
+          <div class="art-circle">+</div>
+        </div>
+        <div class="float-card float-bottom"><span class="mini-icon mint">✚</span><span><strong>CarePlus system</strong><small>Healthcare, in harmony</small></span></div>
+      </div>
+      <div class="hero-decoration"></div>
     </section>
 
-    <section id="about">
-        <h2>About Our System</h2>
+    <section class="stats-strip" aria-label="Platform highlights">
+      <div><strong>01</strong><span>Patient-focused</span></div>
+      <div><strong>02</strong><span>Easy to navigate</span></div>
+      <div><strong>03</strong><span>Connected modules</span></div>
+      <div><strong>04</strong><span>Care-led approach</span></div>
+    </section>
+
+    <section class="services section-wrap" id="services">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">WHAT YOU CAN DO</div>
+          <h2>Everything in one<br><span>careful system.</span></h2>
+        </div>
+        <p>Explore the key modules designed to make everyday hospital administration clearer and more organised.</p>
+      </div>
+      <div class="module-grid">
+        <article class="module-card card-teal">
+          <div class="module-icon">♙</div><span class="card-number">01</span>
+          <h3>Patient Management</h3>
+          <p>Keep patient details and records organised in one convenient place.</p>
+          <a href="#" onclick="showPatients();return false;" aria-label="Open patient management">Open Patient Management</a>
+        </article>
+        <article class="module-card card-blue">
+          <div class="module-icon">✚</div><span class="card-number">02</span>
+
+          <div class="analytics-card activity-chart">
+    <h3>Weekly Patient Activity</h3>
+    <p>Number of patient visits per day (sample data)</p>
+<div class="bar-chart">
+    <div class="bar-item">
+        <div class="bar" style="height: 55%;"></div>
+        <span>Mon</span>
+    </div>
+    <div class="bar-item">
+        <div class="bar" style="height: 75%;"></div>
+        <span>Tue</span>
+    </div>
+    <div class="bar-item">
+        <div class="bar" style="height: 45%;"></div>
+        <span>Wed</span>
+    </div>
+    <div class="bar-item">
+        <div class="bar" style="height: 90%;"></div>
+        <span>Thu</span>
+    </div>
+    <div class="bar-item">
+        <div class="bar" style="height: 65%;"></div>
+        <span>Fri</span>
+    </div>
+    <div class="bar-item">
+        <div class="bar" style="height: 80%;"></div>
+        <span>Sat</span>
+    </div>
+    <div class="bar-item">
+        <div class="bar" style="height: 50%;"></div>
+        <span>Sun</span>
+    </div>
+</div>
+
+<div class="moving-chart">
+    <h3>Patient Visit Trend</h3>
+    <p>Weekly patient activity (sample data)</p>
+
+    <svg viewBox="0 0 600 220" class="trend-svg">
+        <defs>
+            <linearGradient id="lineColor" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#42b883"/>
+                <stop offset="100%" stop-color="#087eae"/>
+            </linearGradient>
+        </defs>
+
+        <path d="M 30 165 L 120 125 L 210 145 L 300 65 L 390 100 L 480 40 L 570 75"
+              class="trend-line"/>
+
+        <circle r="9" class="moving-dot">
+            <animateMotion dur="5s" repeatCount="indefinite"
+                path="M 30 165 L 120 125 L 210 145 L 300 65 L 390 100 L 480 40 L 570 75"/>
+        </circle>
+    </svg>
+
+    <div class="trend-labels">
+        <span>Mon</span><span>Tue</span><span>Wed</span>
+        <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+    </div>
+</div>
+    <div class="bar-chart">
+        <div class="bar-item">
+            <div class="bar" style="height: 55%"></div>
+            <span>Mon</span>
+        </div>
+
+        <div class="bar-item">
+            <div class="bar" style="height: 75%"></div>
+            <span>Tue</span>
+        </div>
+
+        <div class="bar-item">
+            <div class="bar" style="height: 45%"></div>
+            <span>Wed</span>
+        </div>
+
+        <div class="bar-item">
+            <div class="bar" style="height: 90%"></div>
+            <span>Thu</span>
+        </div>
+
+        <div class="bar-item">
+            <div class="bar" style="height: 65%"></div>
+            <span>Fri</span>
+        </div>
+
+        <div class="bar-item">
+            <div class="bar" style="height: 100%"></div>
+            <span>Sat</span>
+        </div>
+
+        <div class="bar-item">
+            <div class="bar" style="height: 35%"></div>
+            <span>Sun</span>
+        </div>
+    </div>
+</div>
+          <h3>Doctor Management</h3>
+          <p>Organise doctor information and make department details easier to access.</p>
+          <a href="#" onclick="showDoctors();return false;">Open Doctor Management /a>
+        </article>
+        <article class="module-card card-lilac">
+          <div class="module-icon">▦</div><span class="card-number">03</span>
+          <h3>Appointments</h3>
+          <p>Bring appointment information together for a smoother daily workflow.</p>
+          <a href="#" onclick="showAppointments(); return false;">Open Appointments </a>
+        </article>
+        <article class="module-card card-peach">
+          <div class="module-icon">❋</div><span class="card-number">04</span>
+          <h3>Diet & Nutrition</h3>
+          <p>Support patient wellbeing with meal plans and dietary notes.</p>
+          <a href="#" onclick="showDiet(); return false;">Open Diet & Nutrition </a>
+        </article>
+
+        <article class="module-card card-blue">
+    <div class="module-icon">🛏️</div>
+    <span class="card-number">05</span>
+
+    <h3>Bed Management</h3>
+
+    <p>Track hospital beds, availability and patient allocation.</p>
+
+    <a href="#" onclick="showBeds(); return false;">
+        Open Bed Management →
+    </a>
+</article>
+      </div>
+    </section>
+
+    <section class="analytics-section" id="analytics">
+
+    <div class="analytics-heading">
+        <div class="eyebrow">HOSPITAL INSIGHTS</div>
+        <h2>Analytics Dashboard</h2>
+        <p>Monitor hospital activity and doctor performance.</p>
+    </div>
+
+    <div class="analytics-cards">
+
+        <div class="analytics-card">
+            <h3>Total Patient Visits</h3>
+            <h2>128</h2>
+            <p>Sample data</p>
+        </div>
+
+        <div class="analytics-card">
+            <h3>Peak Activity</h3>
+            <h2>10 AM - 12 PM</h2>
+            <p>Sample timings</p>
+        </div>
+
+        <div class="analytics-card">
+            <h3>Average Doctor Rating</h3>
+            <h2>4.6 / 5</h2>
+            <p>Demo ratings</p>
+        </div>
+
+        <div class="analytics-card">
+            <h3>Hospital Working Hours</h3>
+            <h2>9 AM - 8 PM</h2>
+            <p>Demo schedule</p>
+        </div>
+
+    </div>
+
+    <div class="analytics-card">
+        <h3>Doctor Directory</h3>
+
+       </div>
+
+       <table>
+    <thead>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Specialization</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+
+    <tbody id="analyticsDoctorList">
+        <tr>
+            <td colspan="3">Loading doctors...</td>
+        </tr>
+    </tbody>
+</table>
+<section id="emergency" class="emergency-section">
+    <div class="emergency-content">
+        <div class="emergency-icon">🚑</div>
+
+        <h2>Need Emergency Assistance?</h2>
+
         <p>
-            CarePlus is a hospital management website
-            designed to simplify healthcare services
-            and patient nutrition management.
+            Your health and safety matter to us.
+            Find important emergency information here.
         </p>
+
+        <div class="emergency-cards">
+
+            <div class="emergency-card">
+                <span>📞</span>
+                <h3>Emergency Helpline</h3>
+                <p>India Emergency Number</p>
+                <h2>112</h2>
+                <a href="tel:112">Call Emergency Services</a>
+            </div>
+
+            <div class="emergency-card">
+                <span>🕒</span>
+                <h3>Hospital Timings</h3>
+                <p>Demo operating hours</p>
+                <h2>9 AM – 8 PM</h2>
+            </div>
+
+            <div class="emergency-card">
+                <span>📍</span>
+                <h3>Hospital Location</h3>
+                <p>Care Plus Hospital</p>
+                <h2>Location to be added</h2>
+            </div>
+
+        </div>
+
+        <small>
+            This is a college demonstration website.
+            For immediate emergencies in India, call 112.
+        </small>
+    </div>
+</section>
+<section id="reviews" class="reviews-section">
+    <div class="reviews-heading">
+        <h2>Customer Feedback & Ratings</h2>
+        <p>Your feedback helps Care Plus Hospital improve.</p>
+    </div>
+
+    <div class="review-form">
+        <h3>Share Your Experience</h3>
+
+        <input type="text" id="reviewName"
+            placeholder="Enter your name">
+
+        <p>Rate Our Hospital</p>
+
+        <div class="star-rating">
+            <input type="radio" name="rating" value="5" id="star5">
+            <label for="star5">★</label>
+            <input type="radio" name="rating" value="4" id="star4">
+            <label for="star4">★</label>
+            <input type="radio" name="rating" value="3" id="star3">
+            <label for="star3">★</label>
+            <input type="radio" name="rating" value="2" id="star2">
+            <label for="star2">★</label>
+            <input type="radio" name="rating" value="1" id="star1">
+            <label for="star1">★</label>
+        </div>
+
+        <textarea id="reviewMessage"
+            placeholder="Write your feedback..."></textarea>
+
+        <button onclick="submitReview()">Submit Feedback</button>
+    </div>
+
+    <div class="reviews-list">
+        <h3>Visitor Reviews</h3>
+        <div id="reviewDisplay"></div>
+    </div>
+</section>
+</section>
+    <section class="about-section" id="about">
+      <div class="about-art">
+        <div class="about-symbol">✚</div>
+        <div class="about-caption"><span class="caption-dot"></span> PEOPLE AT THE HEART OF CARE</div>
+      </div>
+      <div class="about-copy">
+        <div class="eyebrow">ABOUT CAREPLUS</div>
+        <h2>More organised care.<br><span>More room to focus.</span></h2>
+        <p>CarePlus is a hospital management website concept designed to simplify healthcare administration and patient nutrition management. It brings essential modules into a clear, approachable digital experience.</p>
+        <a class="primary-btn link-button" href="#services">Discover the modules <span>→</span></a>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>© 2026 CarePlus Hospital Management System</p>
-    </footer>
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home"><span class="brand-mark">✚</span><span>Care<span>Plus</span><small>HOSPITAL MANAGEMENT</small></span></a>
+    <p>Designed to make healthcare management simpler.</p>
+    <span class="copyright">© 2026 CarePlus Hospital Management System</span>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
